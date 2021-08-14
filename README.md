@@ -21,3 +21,8 @@ Next download the project files to your system, then go to the folder/directory 
 ```
 streamlit run waste.py
 ```
+
+
+### Streamlit app view:
+
+![Streamlit app view](streamlit_app.PNG)
