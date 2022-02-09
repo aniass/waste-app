@@ -3,8 +3,8 @@ import tensorflow as tf
 from tensorflow.keras.models import load_model
 from PIL import Image
 
-MODELSPATH = '.\\models\\waste_model.h5'
-DATAPATH = '.\\data\\waste1.jpg'
+MODELSPATH = '.\models\waste_model.h5'
+DATAPATH = '.\data\waste1.jpg'
 
 
 @st.cache
