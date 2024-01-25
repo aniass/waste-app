@@ -1,23 +1,26 @@
 import streamlit as st
+from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.models import load_model
-from PIL import Image
 
-MODELSPATH = '.\\models\\waste_model.h5'
-DATAPATH = '.\\data\\waste1.jpg'
+# Constants
+MODEL_PATH = 'waste_model.h5'
+DATA_PATH = 'waste1.jpg'
 
 
 @st.cache
-def load_data():
-    img = Image.open(DATAPATH)
+def load_data(image_path):
+    img = Image.open(image_path)
     return img
 
 
-def load_models():
-    model = load_model(MODELSPATH, compile=False)
+@st.cache
+def load_models(model_path):
+    model = load_model(model_path, compile=False)
     return model
 
 
+# Main Streamlit app
 st.title('Waste prediction')
 st.markdown('**This application will let you verify if your waste may be recyclable or not.**')
 st.markdown('To see prdiction you may use a sample data or upload your own image.')
