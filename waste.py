@@ -3,6 +3,7 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
+
 # Constants
 MODEL_PATH = 'waste_model.h5'
 DATA_PATH = 'waste1.jpg'
