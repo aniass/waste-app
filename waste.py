@@ -3,7 +3,6 @@ from PIL import Image
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
-
 # Constants
 MODEL_PATH = 'waste_model.h5'
 DATA_PATH = 'waste1.jpg'
@@ -21,6 +20,13 @@ def load_models(model_path):
     return model
 
 
+def image_processing(img):
+    img_resized = img.resize((64, 64))
+    img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
+    img_array = img_array.reshape((1, 64, 64, 3))
+    return img_array
+
+
 # Main Streamlit app
 st.title('Waste prediction')
 st.markdown('**This application will let you verify if your waste may be recyclable or not.**')
@@ -33,15 +39,13 @@ if page == "Sample Data":
     st.header("Sample prediction for waste")
     if st.checkbox('Show Sample Data'):
         st.info("Sample image:")
-        image = load_data()
+        image = load_data(DATA_PATH)
         st.image(image, caption='Sample Data', use_column_width=True)
-        image = image.resize((64, 64))
-        image = tf.keras.preprocessing.image.img_to_array(image)
-        image = image.reshape((1, 64, 64, 3))
+        image_array = image_processing(image)
         st.subheader("Check waste prediction")
         if st.checkbox('Show Prediction of simple image'):
-            model = load_models()
-            result = model.predict(image)
+            model = load_models(MODEL_PATH)
+            result = model.predict(image_array)
             st.write(result)
             if result[0][0] == 1:
                 prediction = 'Recyclable Waste'
@@ -57,13 +61,11 @@ if page == "Upload an Image":
         img = Image.open(uploaded_file)
         st.info("Show your image:")
         st.image(img, caption="Upload image", use_column_width=True)
-        img = img.resize((64, 64))
-        img = tf.keras.preprocessing.image.img_to_array(img)
-        img = img.reshape((1, 64, 64, 3))
+        img_array = image_processing(image)        
         st.subheader("Check waste prediction")
         if st.checkbox('Show Prediction of your image'):
-            model = load_models()
-            result = model.predict(img)
+            model = load_models(MODEL_PATH)
+            result = model.predict(img_array)
             st.write(result)
             if result[0][0] == 1:
                 prediction = 'Recyclable Waste'
