@@ -10,17 +10,20 @@ DATA_PATH = 'waste1.jpg'
 
 @st.cache
 def load_data(image_path):
+    '''Function to load image'''
     img = Image.open(image_path)
     return img
 
 
 @st.cache
 def load_models(model_path):
+    '''Function to load model'''
     model = load_model(model_path, compile=False)
     return model
 
 
 def image_processing(img):
+    '''Function for image processing'''
     img_resized = img.resize((64, 64))
     img_array = tf.keras.preprocessing.image.img_to_array(img_resized)
     img_array = img_array.reshape((1, 64, 64, 3))
