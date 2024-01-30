@@ -50,10 +50,7 @@ if page == "Sample Data":
             model = load_models(MODEL_PATH)
             result = model.predict(image_array)
             st.write(result)
-            if result[0][0] == 1:
-                prediction = 'Recyclable Waste'
-            else:
-                prediction = 'Organic Waste'
+            prediction = 'Recyclable Waste' if result[0][0] == 1 else 'Organic Waste'
             st.write(prediction)
             st.success("It is prediction for sample image!")
 
@@ -70,9 +67,6 @@ if page == "Upload an Image":
             model = load_models(MODEL_PATH)
             result = model.predict(img_array)
             st.write(result)
-            if result[0][0] == 1:
-                prediction = 'Recyclable Waste'
-            else:
-                prediction = 'Organic Waste'
+            prediction = 'Recyclable Waste' if result[0][0] == 1 else 'Organic Waste'
             st.write(prediction)
             st.success("That is your prediction!")
