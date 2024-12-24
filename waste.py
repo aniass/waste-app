@@ -32,8 +32,8 @@ def image_processing(img):
 
 # Main Streamlit app
 st.title('Waste prediction')
-st.markdown('**This application will let you verify if your waste may be recyclable or not.**')
-st.markdown('To see prdiction you may use a sample data or upload your own image.')
+st.markdown('**This application will let you verify if your waste may be recyclable or not**')
+st.markdown('To see prdiction you may use a sample data or upload your own image')
 
 st.sidebar.title('Select options:')
 page = st.sidebar.selectbox("Choose a page:", ["Sample Data", "Upload an Image"])
