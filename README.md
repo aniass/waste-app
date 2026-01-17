@@ -1,8 +1,7 @@
 # Waste app with Streamlit
 
 ## General info
-
-This is the Streamlit application with using a Deep Learning model to determine if a given waste are recycle or organic. I have used a previous trained CNN (Convolutional Neural Networks) algorithm to detect waste. 
+The Streamlit application with using a Deep Learning model to determine if a given waste are recycle or organic. I have used a previous trained CNN (Convolutional Neural Networks) algorithm to detect waste.
 
 The project and code for this pretrained model are available [here](https://github.com/aniass/Waste-Classification).
 
